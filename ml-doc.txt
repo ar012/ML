@@ -1,0 +1,202 @@
+Installing Apache PredictionIO on Linux / Mac OS X:
+===================================================	https://predictionio.apache.org/install/install-linux/
+							https://predictionio.apache.org/
+
+
+How to build a recommendation engine using Apache’s Prediction IO Machine Learning Server on Ubuntu 
+===================================================================================================
+
+https://medium.freecodecamp.org/building-an-recommendation-engine-with-apache-prediction-io-ml-server-aed0319e0d8
+
+
+Step# 1: Download Apache Prediction IO
+---------------------------------------
+git clone https://github.com/apache/predictionio.git
+
+
+
+
+
+
+
+How to Install and Use Apache PredictionIO for Machine Learning on CentOS 7
+===========================================================================
+https://www.vultr.com/docs/how-to-install-and-use-apache-predictionio-for-machine-learning-on-centos-7
+
+
+
+
+
+
+Installing Apache PredictionIO® from Source Code
+===============================================
+http://predictionio.apache.org/install/install-sourcecode/
+
+
+
+
+
+Step : To export The Prediction IO Path
+---------------------------------------
+Let’s now export the Prediction IO path so we could freely use the pio command without pointing to it’s bin every time. Run the following command in your terminal:
+
+PATH=$PATH:/home/abdurrazzak/pio/PredictionIO-0.12.1/bin; export PATH
+
+PATH=$PATH:/home/abdurrazzak/PredictionIO-0.12.1/bin; export PATH
+
+PATH=$PATH:/opt/PredictionIO-0.12.0-incubating/bin; export PATH
+
+
+App ID and Access Key in the template '/home/abdurrazzak/MyECommerceRecommendation' of '/home/abdurrazzak/PredictionIO-0.12.1/'
+-------------------------------------------------------------------------------------------------------------------------------
+
+     	     Name |   ID |                         Access Key
+-------------------------------------------------------------------------------------------
+ 	   MyApp1 |    2 | iP7QaLESl_RBa4B7QjXGRUdaA4V5EqsXL4ZP8XH-Eet6vZgM_z0d01aOVFbUBXoo 
+ourrecommendation |    1 | hfIGieUM-R9qHMljwN8N1WO2kyaeOZW0CkB_GhDT3JX3MtEL4a57yKDEI7q7EyUU 
+
+
+App ID and Access Key in the template '/home/abdurrazzak/pio/MyRecommendation' of '/home/abdurrazzak/PredictionIO-0.12.1/'
+--------------------------------------------------------------------------------------------------------------------------
+
+     	     Name |   ID |                         Access Key
+-------------------------------------------------------------------------------------------
+        MyTestApp |    3 | _o21kwiP8TPc3WrWxYZMwoKeYAGKR7t9afsywdnRgZaOXdcrBRVv22KvC73mOIqY 
+ 
+
+
+For convenience, set your access key to the shell variable:
+-----------------------------------------------------------
+ourrecommendation
+-----------------
+ACCESS_KEY=hfIGieUM-R9qHMljwN8N1WO2kyaeOZW0CkB_GhDT3JX3MtEL4a57yKDEI7q7EyUU
+
+For MyApp1
+----------
+ACCESS_KEY=iP7QaLESl_RBa4B7QjXGRUdaA4V5EqsXL4ZP8XH-Eet6vZgM_z0d01aOVFbUBXoo
+
+For MyTestApp
+-------------
+ACCESS_KEY="_o21kwiP8TPc3WrWxYZMwoKeYAGKR7t9afsywdnRgZaOXdcrBRVv22KvC73mOIqY"
+
+
+
+
+ACCESS_KEY=tkb1cKoBXZZXAmqBK99aKdKmRGnxyy9yApVxgQ6ofEhr5GGnJH_8OKZIeZbTPlsG
+
+python data/import_eventserver.py --access_key tkb1cKoBXZZXAmqBK99aKdKmRGnxyy9yApVxgQ6ofEhr5GGnJH_8OKZIeZbTPlsG
+
+curl -i -X GET "http://localhost:7070/events.json?accessKey=tkb1cKoBXZZXAmqBK99aKdKmRGnxyy9yApVxgQ6ofEhr5GGnJH_8OKZIeZbTPlsG"
+
+
+
+predictionio Package Documentation"		
+==================================		https://pythonhosted.org/PredictionIO/predictionio.html
+
+
+
+PredictionIO Command Line:
+==========================			https://predictionio.apache.org/cli/#event-server-commands
+
+
+To start the event server:			http://predictionio.apache.org/datacollection/eventapi/
+--------------------------
+pio eventserver		[OR] pio eventserver --ip 127.0.0.1 
+
+
+
+
+
+curl -i -X POST http://localhost:7070/events.json?accessKey=$ACCESS_KEY \
+-H "Content-Type: application/json" \
+-d '{
+  "event" : "rate",
+  "entityType" : "user",
+  "entityId" : "u50",
+  "targetEntityType" : "item",
+  "targetEntityId" : "i50",
+  "properties" : {
+    "rating" : 5
+  }
+  "eventTime" : "2014-11-02T09:39:45.618-08:00"
+}'
+
+
+curl -i -X POST http://localhost:7070/events.json?accessKey=$ACCESS_KEY \
+-H "Content-Type: application/json" \
+-d '{
+  "event" : "buy",
+  "entityType" : "user",
+  "entityId" : "u49",
+  "targetEntityType" : "item",
+  "targetEntityId" : "i51",
+  "eventTime" : "2014-11-10T12:34:56.123-08:00"
+}'
+
+
+
+
+abdurrazzak@ws15:~/pio/MyRecommendation$ curl -i -X POST http://localhost:7070/events.json?accessKey=$ACCESS_KEY \
+> -H "Content-Type: application/json" \
+> -d '{
+>   "event" : "rate",
+>   "entityType" : "user",
+>   "entityId" : "u0",
+>   "targetEntityType" : "item",
+>   "targetEntityId" : "i0",
+>   "properties" : {
+>     "rating" : 5
+>   }
+>   "eventTime" : "2014-11-02T09:39:45.618-08:00"
+> }'
+
+HTTP/1.1 201 Created
+Server: spray-can/1.3.3
+Date: Wed, 19 Sep 2018 05:12:32 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 46
+
+{"eventId":"c7d51e3d2ae54ff3b71a38f08cda8af9"}
+
+
+
+abdurrazzak@ws15:~/pio/MyRecommendation$ curl -i -X POST http://localhost:7070/events.json?accessKey=$ACCESS_KEY \
+> -H "Content-Type: application/json" \
+> -d '{
+>   "event" : "buy",
+>   "entityType" : "user",
+>   "entityId" : "u1",
+>   "targetEntityType" : "item",
+>   "targetEntityId" : "i2",
+>   "eventTime" : "2014-11-10T12:34:56.123-08:00"
+> }'
+
+HTTP/1.1 201 Created
+Server: spray-can/1.3.3
+Date: Wed, 19 Sep 2018 05:13:07 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 46
+
+{"eventId":"2916070823fa4d71a0624471cb957682"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
