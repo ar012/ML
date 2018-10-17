@@ -6,3 +6,6 @@ https://www.altexsoft.com/blog/datascience/machine-learning-project-structure-st
 
 
 To develop an ML system that can identify the suspected fraudulent purchases.
+
+
+I am working on the topic Dataset preparation and prepossessing, for this required a dataset about fraudulent purchases
